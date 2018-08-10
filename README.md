@@ -27,7 +27,7 @@ Qiitaの記事一覧を表示し、記事名をタップすると詳細画面に
 
 MVPとClean Archtectureを組み合わせて作成された[Googleのサンプルコード](https://github.com/googlesamples/android-architecture/tree/todo-mvp-clean)を参考にしている。
 
-#### クラス構成
+#### 構成
 
 ![](./image/figure.png)
 
@@ -51,3 +51,7 @@ Presenter、Usecase、Repositoryの各データのコールバックはEventBus�
 * **[OKHttp3](https://github.com/square/okhttp)**
 
 ### ビルド手順
+* 1. 当リポジトリをCloneする
+* 2. Android Studio を起動
+* 3. 「Open an existing Android Studio project」からクローンしたプロジェクトを起動
+* 4. ビルドが自動で始まらない場合は「Build」から「Rebuild」する
