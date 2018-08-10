@@ -54,6 +54,8 @@ Presenter、Usecase、Repositoryの各データのコールバックはEventBus�
 * 1. 当リポジトリをCloneする
 * 2. Android Studio を起動
 * 3. 「Open an existing Android Studio project」からクローンしたプロジェクトを起動
-* 4. ビルドが自動で始まらない場合は「Build」から「Rebuild」する
+* 4. ビルドが自動で始まらない場合は「Build」->「Rebuild」する
+* 5. 「Run」->「Run app」からのエミューレータもしくは実機で動作確認
 
 開発環境: Android Studio 3.1.4
+対応Androidバージョン: Android4.4以降
