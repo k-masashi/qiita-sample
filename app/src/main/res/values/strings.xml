@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">キータ記事取得サンプル</string>
+    <string name="message_can_not_get_articles_error">記事の取得に失敗しました。</string>
+    <string name="message_can_not_get_article_body_error">記事の本文取得に失敗しました。</string>
+</resources>
