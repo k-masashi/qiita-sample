@@ -57,5 +57,4 @@ Presenter、Usecase、Repositoryの各データのコールバックはEventBus�
 * 4. ビルドが自動で始まらない場合は「Build」->「Rebuild」する
 * 5. 「Run」->「Run app」からのエミューレータもしくは実機で動作確認
 
-開発環境: Android Studio 3.1.4
-対応Androidバージョン: Android4.4以降
+開発環境: Android Studio 3.1.4 / 対応Androidバージョン: Android4.4以降
