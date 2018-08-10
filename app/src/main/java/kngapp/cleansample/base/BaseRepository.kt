@@ -12,6 +12,17 @@ package kngapp.cleansample.base
 interface BaseRepository<out T, in S> {
     fun start()
     fun stop()
+    /**
+     * 外部APIやDBから取得したレスポンスのパース処理
+     *
+     * @param response レスポンス文字列
+     */
     fun parse(response: String): T?
+
+    /**
+     * 取得した結果をEventBusへPOSTするメソッド
+     *
+     * @param event EventBusでpostするイベント
+     */
     fun postResult(event: S)
 }

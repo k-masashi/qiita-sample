@@ -35,6 +35,7 @@ class ArticleListPresenter(private val view: ArticleListContract.View) : Article
         }
     }
 
+    // 記事一覧取得Usecaseからのコールバックを受け取るSubscribeメソッド
     @Subscribe
     override fun loadCompletedArticlesTask(event: GetArticleListTaskEvent) {
         if (event.isSuccess && event.articleList != null) {

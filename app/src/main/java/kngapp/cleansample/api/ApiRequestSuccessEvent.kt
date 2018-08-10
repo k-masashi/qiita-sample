@@ -3,7 +3,7 @@ package kngapp.cleansample.api
 /**
  * Created by masashi on 2018/08/10.
  *
- * Apiリクエスト成功イベント
+ * APIリクエスト成功イベント
  */
 
 data class ApiRequestSuccessEvent(

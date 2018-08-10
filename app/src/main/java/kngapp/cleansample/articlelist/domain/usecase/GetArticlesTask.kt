@@ -9,7 +9,7 @@ import org.greenrobot.eventbus.Subscribe
 /**
  * Created by masashi on 2018/08/09.
  *
- * 記事一覧取得ロジック
+ * 記事一覧取得のUsecase
  */
 
 class GetArticlesTask : BaseTask {
@@ -24,6 +24,7 @@ class GetArticlesTask : BaseTask {
         EventBus.getDefault().unregister(this)
     }
 
+    // Repositoryからのレスポンスを受け取るSubscribeメソッド
     @Subscribe
     fun getRepositoryEvent(event: ArticleListRepositoryEvent) {
         if (event.isSuccess && event.articleList != null) {

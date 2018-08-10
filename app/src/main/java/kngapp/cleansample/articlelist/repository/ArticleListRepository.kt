@@ -3,7 +3,7 @@ package kngapp.cleansample.articlelist.repository
 import com.google.gson.Gson
 import kngapp.cleansample.api.ApiRequestFailedEvent
 import kngapp.cleansample.api.ApiRequestSuccessEvent
-import kngapp.cleansample.api.ArticleListApiCaller
+import kngapp.cleansample.api.ArticleListApiManager
 import kngapp.cleansample.articlelist.domain.model.Articles
 import kngapp.cleansample.base.BaseRepository
 import org.greenrobot.eventbus.EventBus
@@ -13,14 +13,16 @@ import org.greenrobot.eventbus.Subscribe
  * Created by masashi on 2018/08/10.
  *
  * 記事一覧を取得するRepositoryクラス
+ * 外部APIやDBとのやり取りはRepositoryクラスのみから行う
  */
 
 class ArticleListRepository: BaseRepository<Articles, ArticleListRepositoryEvent> {
+
     override fun start() {
         EventBus.getDefault().register(this)
         //記事取得APIをリクエスト
         //サンプルアプリのためクエリーはダミーの「android」
-        ArticleListApiCaller("android").requestApi()
+        ArticleListApiManager("android").requestApi()
     }
 
     override fun stop() {
@@ -35,6 +37,7 @@ class ArticleListRepository: BaseRepository<Articles, ArticleListRepositoryEvent
         EventBus.getDefault().post(event)
     }
 
+    // APIからの成功レスポンスを取得するSubscribeメソッド
     @Subscribe
     fun getApiSuccessEvent(event: ApiRequestSuccessEvent) {
         // パース処理のため、レスポンスを加工
@@ -44,6 +47,7 @@ class ArticleListRepository: BaseRepository<Articles, ArticleListRepositoryEvent
         stop()
     }
 
+    // APIからの失敗レスポンスを取得するSubscribeメソッド
     @Subscribe
     fun getApiFailedEvent(event: ApiRequestFailedEvent) {
         postResult(ArticleListRepositoryEvent(false, null))

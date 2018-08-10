@@ -3,7 +3,7 @@ package kngapp.cleansample.articlelist
 /**
  * Created by masashi on 2018/08/10.
  *
- * キータの記事一覧を出力するView
+ * Qiitaの記事一覧を出力するView
  */
 
 import android.content.Intent
@@ -19,16 +19,19 @@ import kngapp.cleansample.base.BaseActivity
 
 class ArticleListActivity : BaseActivity(), ArticleListContract.View {
 
+    // 値代入が確約された変数はnullをいれずにlateinitを利用
     private lateinit var articleListPresenter: ArticleListPresenter
     private lateinit var interfacePresenter: ArticleListContract.Presenter
     private lateinit var articleListView: ListView
     private lateinit var articleListAdapter: ArticleListAdapter
 
     override fun setPresenter(presenter: ArticleListContract.Presenter) {
+        // Presenterを生成
         interfacePresenter = presenter
     }
 
     override fun showArticles(articles: List<Article>) {
+        // スコープ関数applyは利用しない方針 (ローカル変数との名前重複問題等を避けるため)
         articleListAdapter.setList(articles)
         articleListAdapter.notifyDataSetChanged()
     }
@@ -39,6 +42,7 @@ class ArticleListActivity : BaseActivity(), ArticleListContract.View {
     }
 
     override fun showArticleDetailActivity(article: Article) {
+        // 画面遷移メソッドはBaseActivityの方で持っておくべき場合もある
         val intent = Intent(this, ArticleDetailActivity::class.java)
         intent.putExtra(ArticleDetailActivity.INTENT_KEY_ARTICLE_DATA, Gson().toJson(article))
         startActivity(intent)
@@ -60,6 +64,7 @@ class ArticleListActivity : BaseActivity(), ArticleListContract.View {
         articleListView.onItemClickListener = ArticlesListClickEvent()
     }
 
+    // 記事一覧ListViewの項目タップイベント
     internal inner class ArticlesListClickEvent : AdapterView.OnItemClickListener {
         override fun onItemClick(adapter: AdapterView<*>, view: View, position: Int, id: Long) {
             articleListPresenter.selectArticleTask(position)

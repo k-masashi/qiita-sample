@@ -14,7 +14,7 @@ import kngapp.cleansample.articlelist.domain.model.Article
 /**
  * Created by masashi on 2018/08/09.
  *
- * 記事一覧表示用Listで利用するAdapter
+ * 記事一覧表示用ListViewで利用するAdapter
  */
 
 class ArticleListAdapter(context: Context) : BaseAdapter() {

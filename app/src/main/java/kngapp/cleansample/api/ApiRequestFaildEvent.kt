@@ -7,15 +7,18 @@ package kngapp.cleansample.api
  */
 
 data class ApiRequestFailedEvent(
+        // エラーステータス
         val errorStatus: ApiRequestErrorStatus,
+        // 通信したAPIの名前
         val apiName: ApiConstants.ApiName,
+        // エラー文言
         val errorMessage: String? = null)
 
 /**
  * Apiリクエスト失敗時のステータス定義
  *
  * サンプルアプリのため、いくつかピックアップ
- * デフォルトのエラーステータスを実際は利用した方が良い場合もある
+ * デフォルトのエラーステータスを実際は利用した方が良いが簡易アプリのため用意
  */
 enum class ApiRequestErrorStatus {
     NO_RESULT,

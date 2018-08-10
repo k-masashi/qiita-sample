@@ -3,7 +3,7 @@ package kngapp.cleansample.base
 /**
  * Created by masashi on 2018/08/10.
  *
- * Base View クラス
+ * BaseのViewクラス
  */
 
 interface BaseView<T> {
