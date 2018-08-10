@@ -29,7 +29,9 @@ MVPとClean Archtectureを組み合わせて作成された[Googleのサンプ�
 
 #### クラス構成
 
-*クラスイメージ
+![](./image/figure.png)
+
+Presenter、Usecase、Repositoryの各データのコールバックはEventBusを利用。RxJavaを利用したケースが多いが、コードが少量になる点やルールが簡潔であることから、今回はEventBusを利用している。
 
 ### 完成図
 
@@ -37,6 +39,7 @@ MVPとClean Archtectureを組み合わせて作成された[Googleのサンプ�
 |---|---|
 |![](./image/activity_articles_image.png)|![](./image/activity_detail_image.png)|
 
+#### 要件との対応
 * **２画面以上の構成**: Qiitaの記事一覧(Android関連)を１画面目に表示し、記事名をタップすると本文を表示する画面に遷移。
 * **何かしらの非同期通信**: Qiitaの記事取得APIと通信を行う。
 * **非同期通信の結果により画面上の表示が変更**: QiitaのAPIから取得した結果をListViewへ反映。
