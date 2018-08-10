@@ -4,10 +4,10 @@
 Qiitaの記事一覧を表示し、記事名をタップすると詳細画面に遷移するAndroidサンプルアプリ。
 
 ### 要件
-* **大規模なアプリ開発を想定した設計であること**: 大規模な開発であることを想定し、Clean Architectureに基づいて作成。
-* **２画面以上の構成**: Qiitaの記事一覧(Android関連)を１画面目に表示し、記事名をタップすると本文を表示する画面に遷移。
-* **何かしらの非同期通信**: Qiitaの記事取得APIと通信を行う。
-* **非同期通信の結果により画面上の表示が変更**: QiitaのAPIから取得した結果をListViewへ反映。
+* **大規模なアプリ開発を想定した設計であること**
+* **２画面以上の構成**
+* **何かしらの非同期通信**
+* **非同期通信の結果により画面上の表示が変更**
 
 
 ### 設計
@@ -33,7 +33,8 @@ MVPとClean Archtectureを組み合わせて作成された[Googleのサンプ�
 
 ### 完成図
 
-*アプリイメージ
+![image](./image/activity_articles_image.png)
+![image](./image/activity_detail_image.png)
 
 * **２画面以上の構成**: Qiitaの記事一覧(Android関連)を１画面目に表示し、記事名をタップすると本文を表示する画面に遷移。
 * **何かしらの非同期通信**: Qiitaの記事取得APIと通信を行う。
@@ -41,6 +42,6 @@ MVPとClean Archtectureを組み合わせて作成された[Googleのサンプ�
 
 ### 利用ライブラリ
 
-* ** [Gson](https://github.com/google/gson) **
-* ** [EventBus](https://github.com/greenrobot/EventBus) **
-* ** [OKHttp3](https://github.com/square/okhttp) **
+* **[Gson](https://github.com/google/gson)**
+* **[EventBus](https://github.com/greenrobot/EventBus)**
+* **[OKHttp3](https://github.com/square/okhttp)**
