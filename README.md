@@ -27,4 +27,20 @@ Qiitaの記事一覧を表示し、記事名をタップすると詳細画面に
 
 MVPとClean Archtectureを組み合わせて作成された[Googleのサンプルコード](https://github.com/googlesamples/android-architecture/tree/todo-mvp-clean)を参考にしている。
 
+#### クラス構成
+
+*クラスイメージ
+
+### 完成図
+
+*アプリイメージ
+
+* **２画面以上の構成**: Qiitaの記事一覧(Android関連)を１画面目に表示し、記事名をタップすると本文を表示する画面に遷移。
+* **何かしらの非同期通信**: Qiitaの記事取得APIと通信を行う。
+* **非同期通信の結果により画面上の表示が変更**: QiitaのAPIから取得した結果をListViewへ反映。
+
 ### 利用ライブラリ
+
+* ** [Gson](https://github.com/google/gson) **
+* ** [EventBus](https://github.com/greenrobot/EventBus) **
+* ** [OKHttp3](https://github.com/square/okhttp) **
