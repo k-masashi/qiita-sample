@@ -51,11 +51,12 @@ abstract class ApiRequestManager {
                         EventBus.getDefault().post(ApiRequestFailedEvent(ApiRequestErrorStatus.OTHER_ERROR, apiName, ""))
                     }
                     return
-                } else {
-                    response.body()?.let {
-                        body = it.string()
-                    }
                 }
+
+                response.body()?.let {
+                    body = it.string()
+                }
+
                 handler.post {
                     EventBus.getDefault().post(ApiRequestSuccessEvent(response, body, apiName, null))
                 }
