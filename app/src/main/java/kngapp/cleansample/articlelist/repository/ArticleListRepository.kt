@@ -1,6 +1,7 @@
 package kngapp.cleansample.articlelist.repository
 
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import kngapp.cleansample.api.ApiRequestFailedEvent
 import kngapp.cleansample.api.ApiRequestSuccessEvent
 import kngapp.cleansample.api.ArticleListApiManager
@@ -31,7 +32,11 @@ class ArticleListRepository: BaseRepository<Articles, ArticleListRepositoryEvent
     }
 
     override fun parse(response: String): Articles? {
-        return Gson().fromJson(response, Articles::class.java)
+        return try {
+            Gson().fromJson(response, Articles::class.java)
+        } catch (e: JsonSyntaxException) {
+            null
+        }
     }
 
     override fun postResult(event: ArticleListRepositoryEvent) {
