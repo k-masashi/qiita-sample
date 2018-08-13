@@ -3,11 +3,11 @@ package kngapp.cleansample.api
 /**
  * Created by masashi on 2018/08/10.
  *
- * Apiリクエスト失敗イベント
+ * Apiリクエスト失敗(レスポンスが返されなかった場合)イベント
  */
 
 data class ApiRequestFailedEvent(
-        // エラーステータス
+        // エラー情報
         val errorStatus: ApiRequestErrorStatus,
         // 通信したAPIの名前
         val apiName: ApiConstants.ApiName,
@@ -15,10 +15,9 @@ data class ApiRequestFailedEvent(
         val errorMessage: String? = null)
 
 /**
- * Apiリクエスト失敗時のステータス定義
+ * Apiリクエスト失敗時(レスポンスが返されなかった場合)のステータス定義
  *
  * サンプルアプリのため、いくつかピックアップ
- * デフォルトのエラーステータスを実際は利用した方が良いが簡易アプリのため用意
  */
 enum class ApiRequestErrorStatus {
     NETWORK_ERROR,
