@@ -41,8 +41,7 @@ class ArticleListRepository: BaseRepository<Articles, ArticleListRepositoryEvent
     // APIからの成功レスポンスを取得するSubscribeメソッド
     @Subscribe
     fun getApiSuccessEvent(event: ApiRequestSuccessEvent) {
-        if (event.result is Response && event.result.code() == 200) {
-            // 200ステータスの場合のみ、レスポンスをパース
+        if (event.result != null && event.result is Response && event.result.code() == 200) {
             // パース処理のため、レスポンスを加工
             val body = "{\"articles\":" + event.body + "}"
             val articles = parse(body)

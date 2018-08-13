@@ -32,23 +32,23 @@ abstract class ApiRequestManager {
         val handler = Handler()
         OkHttpClient().newCall(createRequest()).enqueue(object : Callback {
 
-            // 失敗の場合はApiリクエスト失敗用のイベントをPOST
+            // 失敗の場合(ネットワーク接続失敗など)はApiリクエスト失敗用のイベントをPOST
             override fun onFailure(call: Call?, e: IOException?) {
                 var errorMessage = ""
                 e?.let {
                     errorMessage = it.message.toString()
                 }
                 handler.post {
-                    EventBus.getDefault().post(ApiRequestFailedEvent(ApiRequestErrorStatus.OTHER_ERROR, apiName, errorMessage))
+                    EventBus.getDefault().post(ApiRequestFailedEvent(ApiRequestErrorStatus.NETWORK_ERROR, apiName, errorMessage))
                 }
             }
 
-            // 成功の場合はApiリクエスト成功用のイベントをPOST
+            // 成功の場合(レスポンスが返却された場合)はApiリクエスト成功用のイベントをPOST
             override fun onResponse(call: Call?, response: Response?) {
                 var body = ""
                 if (response == null) {
                     handler.post {
-                        EventBus.getDefault().post(ApiRequestFailedEvent(ApiRequestErrorStatus.NO_RESULT, apiName, ""))
+                        EventBus.getDefault().post(ApiRequestFailedEvent(ApiRequestErrorStatus.OTHER_ERROR, apiName, ""))
                     }
                     return
                 } else {
