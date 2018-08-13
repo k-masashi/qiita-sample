@@ -39,7 +39,6 @@ abstract class ApiRequestManager {
                     errorMessage = it.message.toString()
                 }
                 handler.post {
-                    // 今回はサンプルアプリのためエラーステータスごとの判定は省略
                     EventBus.getDefault().post(ApiRequestFailedEvent(ApiRequestErrorStatus.OTHER_ERROR, apiName, errorMessage))
                 }
             }

@@ -6,6 +6,7 @@ import kngapp.cleansample.api.ApiRequestSuccessEvent
 import kngapp.cleansample.api.ArticleListApiManager
 import kngapp.cleansample.articlelist.domain.model.Articles
 import kngapp.cleansample.base.BaseRepository
+import okhttp3.Response
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
@@ -40,10 +41,15 @@ class ArticleListRepository: BaseRepository<Articles, ArticleListRepositoryEvent
     // APIからの成功レスポンスを取得するSubscribeメソッド
     @Subscribe
     fun getApiSuccessEvent(event: ApiRequestSuccessEvent) {
-        // パース処理のため、レスポンスを加工
-        val body = "{\"articles\":" + event.body + "}"
-        val articles = parse(body)
-        postResult(ArticleListRepositoryEvent(true, articles))
+        if (event.result is Response && event.result.code() == 200) {
+            // 200ステータスの場合のみ、レスポンスをパース
+            // パース処理のため、レスポンスを加工
+            val body = "{\"articles\":" + event.body + "}"
+            val articles = parse(body)
+            postResult(ArticleListRepositoryEvent(true, articles))
+        } else {
+            postResult(ArticleListRepositoryEvent(false, null))
+        }
         stop()
     }
 
